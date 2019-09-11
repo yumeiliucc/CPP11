@@ -1,17 +1,12 @@
 //lambda, smart point, assert
 #include <functional>  // for lambda
-#include <memory.h>   //for smart point
-#include <cassert>   //for assert
 #include <vector>
 #include <iostream>
 #include <algorithm> 
 
 class A{
 public:
-	A(int x):val(x){}
-	
-	//[this](){ cout << val << endl; }; 
-	
+	A(int x):val(x){}		
 private:
 	int val;
 };
@@ -23,8 +18,6 @@ void outputFunction(int i){
 int main()
 {
     A B(100);
-	
-	
 	using namespace std;
     std::vector<int> vec{1,2};
 	std::for_each(vec.begin(), vec.end(), [](int v){std::cout << v <<std::endl;});
