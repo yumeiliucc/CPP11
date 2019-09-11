@@ -1,5 +1,7 @@
-//lambda
+//lambda, smart point, assert
 #include <functional>  // for lambda
+#include <memory.h>   //for smart point
+#include <cassert>   //for assert
 #include <vector>
 #include <iostream>
 #include <algorithm> 
@@ -14,10 +16,14 @@ private:
 	int val;
 };
 
+void outputFunction(int i){
+	std::cout<<i<<std::endl;
+}
 
 int main()
 {
     A B(100);
+	
 	
 	using namespace std;
     std::vector<int> vec{1,2};
@@ -38,15 +44,18 @@ int main()
     for_each(vec.begin(), vec.end(), [&d](int v)mutable{ cout << v+d << endl; d++; cout<<" d : "<<d<<endl; }); 
 	cout<<"after for_each d : "<<d<<endl; // output : 12
 
-	 
-
-   
 	 int e = 10;    
      int f = 15;    
      for_each(vec.begin(), vec.end(), [=, &f](int v){ cout << v+e << endl; f++; });    
      cout <<"after for_each f : "<< f << endl;   
-
+     cout<<"the raw element : "<<endl;
+	 for_each(vec.begin(), vec.end(), outputFunction);
+     cout<<endl;
 	 for_each(vec.begin(), vec.end(), [](int &v){ v++; });    
      for_each(vec.begin(), vec.end(), [](int v){ cout << v << endl; }); 
+
+	 for_each(vec.begin(), vec.end(), [](int v){ v++; });    
+     for_each(vec.begin(), vec.end(), [](int &v){ cout << v << endl; }); 
 	
 }
+
